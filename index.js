@@ -1,6 +1,8 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const cfenv = require('cfenv');
+const appEnv = cfenv.getAppEnv();
 
 var app = express()
 
@@ -9,7 +11,11 @@ app.use(express.static(__dirname));
 
 app.use(bodyParser.json());
 
-app.listen(443, () => {
+const MY_PORT = appEnv.isLocal ? 8080 : appEnv.port;
+const MY_HOST = appEnv.isLocal ? "localhost" : appEnv.host;
+
+
+app.listen(MY_PORT, () => {
   console.log("App started.");
 });
 
