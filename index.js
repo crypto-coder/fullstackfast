@@ -11,7 +11,7 @@ app.use(express.static(__dirname));
 
 app.use(bodyParser.json());
 
-const MY_PORT = appEnv.isLocal ? 8080 : appEnv.port;
+const MY_PORT = appEnv.isLocal ? 8081 : appEnv.port;
 const MY_HOST = appEnv.isLocal ? "localhost" : appEnv.host;
 
 
